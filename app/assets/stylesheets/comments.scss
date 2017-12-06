@@ -1,3 +1,79 @@
 // Place all the styles related to the Comments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.eventName{
+	text-decoration: underline;
+	text-decoration-style:double;
+	text-shadow: 5px 4px 5px #441947;
+	text-decoration-color: #c564b1;
+	color: #c564b1;
+	text-align: left;
+	margin-left: 10%;
+	font-size: 4em;
+}
+
+.link{
+	float: right;
+	margin-right: 5.5%;
+	font-size: 1.1em;
+}
+.wrapper {
+  max-width: 1000px;
+  margin: 80px auto;
+}
+
+.wrapper > div {
+	box-shadow: 2px 3px 3px #c564b1, -2px -2px 3px #c564b1;
+  border: 2px solid #c564b1;
+  border-radius: 5px;
+  padding: 1em;
+	background: rgba(199,21,133,0.2);
+}.wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 40px;
+  grid-auto-rows: minmax(450px, auto);
+}
+.one {
+  grid-column: 1 / 2;
+  grid-row: 1 ;
+}
+.two {
+  grid-column: 2 / 2;
+  grid-row: 1;
+}
+.info{
+	margin: 20px auto;
+}
+.table{
+	width: 100%;
+}
+.table th{
+	border: 2px solid #c564b1;
+	background: rgba(199,21,133,0.2);
+}
+
+.commentb{
+	background-color: inherit;
+	color: #c564b1;
+	width: 25%;
+	max-width: 25%;
+	padding: 3px 7px;
+	margin-top: 3%;
+	border: 2px solid #441947;
+	font-size: .9em;
+	opacity: .9;
+	margin-left: 38%;
+}
+.commentb:hover{
+	box-shadow: 2px 3px 3px #c564b1, -2px -2px 3px #c564b1;
+	color: #3da5de;
+	opacity: 1;
+	transition: 1.2s;
+}
+.commentext{
+	border-bottom: 2px solid #3da5de;
+	margin: 10px 0;
+	width: 100%;
+}

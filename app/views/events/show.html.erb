@@ -1,38 +1,43 @@
-<%= link_to "Events Dashboard", "/events" %>
-<h1><%= @event.name %></h1>
-<h3>Host: <%= @event.user.first_name %></h3>
-<h3>Date: <%= @event.date.strftime('%b %e, %Y') %></h3>
-<h3>Location: <%= @event.location %></h3>
-<h3>People who are joining the event: <%= @event.users.count %></h3>
-
-<table>
-	<thead>
-		<th>Name</th>
-		<th>Location</th>
-		<th>State</th>
-	</thead>
-	<tbody>
-		<% @attend.each do |a| %>
-		<td><%= a.user.first_name %></td>
-		<td><%= a.event.location %></td>
-		<td><%= a.event.state %></td>
+<div class="link"><%= link_to "Events Dashboard", "/events" %></div>
+<h1 class="eventName"><%= @event.name %></h1>
+<div class="wrapper">
+	<div class="one">
+		<h3 class="info">HOST: <%= @event.user.first_name %></h3>
+		<h3 class="info">DATE: <%= @event.date.strftime('%b %e, %Y') %></h3>
+		<h3 class="info">LOCATION: <%= @event.location %></h3>
+		<h3 class="info">People who are joining the event: <%= @event.users.count %></h3>
+		<table class="table">
+			<thead>
+				<th>Name</th>
+				<th>Location</th>
+				<th>State</th>
+			</thead>
+			<tbody>
+				<% @attend.each do |a| %>
+				<td><%= a.user.first_name %></td>
+				<td><%= a.event.location %></td>
+				<td><%= a.event.state %></td>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+	<div class="two">
+		<h3> CONVERSE:</h3>
+		<div class="commentbox">
+			<% @comment.each do |e| %>
+			<h4><%= e.first_name %> says: <%= e.content %></h4>
+			<% end %>
+		</div>
+		<% if flash[:errors] %>
+			<% flash[:errors].each do |e| %>
+				<p class="errors"><%= e %></p>
+			<% end %>
 		<% end %>
-	</tbody>
-</table>
+		<form action="/comments/<%= @event.id %>/create" method="post">
+			<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+			<input  class="commentext" type="text" name="comment[content]" placeholder=">">
+			<button class="commentb" type="submit" name="button">Submit Comment</button>
+		</form>
 
-<h3>Discussion about this event:</h3>
-<fieldset>
-	<% @comment.each do |e| %>
-	<p><%= e.first_name %> says: <%= e.content %></p>
-	<% end %>
-</fieldset>
-<% if flash[:errors] %>
-	<% flash[:errors].each do |e| %>
-		<%= e %>
-	<% end %>
-<% end %>
-<form action="/comments/<%= @event.id %>/create" method="post">
-	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-	<input type="text" name="comment[content]">
-	<input type="submit" value="Submit Comment">
-</form>
+	</div>
+</div>

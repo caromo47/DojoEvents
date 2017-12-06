@@ -1,31 +1,45 @@
-<%= link_to "Events Dashboard", "/events" %>
-<h1>Edit your Profile</h1>
-<% if flash[:errors] %>
-	<% flash[:errors].each do |e| %>
-		<%= e %>
+<div class="link"><%= link_to "Events Dashboard", "/events" %></div>
+<div class="edit_container">
+	<h1 class="edit_header">Edit your Profile</h1>
+	<% if flash[:errors] %>
+		<% flash[:errors].each do |e| %>
+			<p><%= e %></p>
+		<% end %>
 	<% end %>
-<% end %>
-
-<form action="/users/<%= @user.id %>"  method="post">
-	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-	<input type="hidden" name="_method" value="patch">
-	<table>
-		<tr>
-			<td>First Name:</td>
-			<td><input type="text" name="user[first_name]" value="<%= @user.first_name %>"></td>
-		</tr>
-		<tr>
-			<td>Last Name:</td>
-			<td><input type="text" name="user[last_name]" value="<%= @user.last_name %>"></td>
-		</tr>
-		<tr>
-			<td>Email:</td>
-			<td><input type="email" name="user[email]" value="<%= @user.email %>"></td>
-		</tr>
-		<tr>
-			<td>Location:</td>
-			<td><input type="text" name="user[location]" value="<%= @user.location %>">
-				<select name="user[state]" value="<%= @user.state %>">
+	<div class="adding_event">
+		<div class="add1">
+			<p>First Name:</p>
+		</div>
+		<div class="add2">
+			<form action="/users/<%= @user.id %>"  method="post">
+				<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+				<input type="hidden" name="_method" value="patch">
+				<input type="text" name="user[first_name]" value="<%= @user.first_name %>">
+			</div>
+			<div class="add3">
+				<p>Last Name:</p>
+			</div>
+			<div class="add4">
+				<input type="text" name="user[last_name]" value="<%= @user.last_name %>">
+			</div>
+			<div class="add5">
+				<p>Email:</p>
+			</div>
+			<div class="add6">
+				<input type="email" name="user[email]" value="<%= @user.email %>">
+			</div>
+			<div class="add7">
+				<p>Location:</p>
+			</div>
+			<div class="add8">
+				<input type="text" name="user[location]" value="<%= @user.location %>">
+			</div>
+			<div class="add9">
+				<p>State:</p>
+			</div>
+			<div class="add10">
+				<select name="user[state]">
+					<option selected="selected"><%= @user.state %></option>
 					<option value="AL">AL</option>
 					<option value="AK">AK</option>
 					<option value="AR">AR</option>
@@ -78,8 +92,9 @@
 					<option value="WV">WV</option>
 					<option value="WY">WY</option>
 				</select>
-			</td>
-		</tr>
-	</table>
-	<input type="submit" value="Update Records">
-</form>
+			</div>
+		</div>
+		<button type="submit" id="edit_event_button" name="submit">Update Records</button>
+		</form>
+	</div>
+</div>

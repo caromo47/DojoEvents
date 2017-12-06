@@ -1,3 +1,122 @@
 // Place all the styles related to the Sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.body{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	color: #c564b1;
+}
+.errors{
+	font-family: 'Menlo', sans-serif;
+	letter-spacing: 2px;
+	margin-top: 5px;
+	-webkit-animation: neon 1.5s ease-in-out infinite alternate;
+	-moz-animation: neon 1.5s ease-in-out infinite alternate;
+	animation: neon 1.5s ease-in-out infinite alternate;
+	color: #fffafa;
+}
+#logcontainer{
+	box-shadow: 2px 3px 3px #c564b1, -2px -2px 3px #c564b1;
+	border-radius: 5px;
+	margin-top: 5vh;
+	max-width: 90%;
+	width: 35%;
+	max-height: 100vh;
+	text-align: center;
+	font-size: 1.7em;
+}
+input{
+	font-family: 'Menlo', sans-serif;
+	text-transform: uppercase;
+	margin: auto;
+	width: 80%;
+	display: block;
+	background-color: inherit;
+	border: none;
+	border-bottom: 2px solid #441947;
+	font-size: .9em;
+	color: #baa7ba;
+	letter-spacing: 2px;
+	text-transform: none;
+}
+input::-webkit-input-placeholder {
+color: #baa7ba !important;
+text-transform: uppercase;
+}
+.login{
+	padding-bottom: 15px;
+	margin-top: 0;
+	box-shadow: 0 4px 2px -2px #c564b1;
+}
+.location input{
+	width: 70%;
+	max-width: 70%;
+	display: inline-block;
+}
+P{
+	font-size: .6em;
+	margin: auto;
+	font-family: 'Menlo', sans-serif;
+	line-height: 200%;
+}
+button{
+	background-color: inherit;
+	color: #c564b1;
+	width: 25%;
+	max-width: 25%;
+	padding: 3px 7px;
+	margin-top: 3%;
+	border: 2px solid #441947;
+	font-size: .55em;
+	opacity: .5;
+}
+button:hover{
+	box-shadow: 2px 3px 3px #c564b1, -2px -2px 3px #c564b1;
+	color: #3da5de;
+	opacity: 1;
+	transition: 1.2s;
+}
+select{
+	background-color: inherit;
+	color: #baa7ba;
+	font-size: .7em;
+	padding: 0;
+	border-radius: 0px;
+	border: none;
+}
+h2 {
+  color: #7b0999;
+  font-family: 'Montserrat', sans-serif;
+}
+
+h2:hover {
+  -webkit-animation: neon 1.5s ease-in-out infinite alternate;
+  -moz-animation: neon 1.5s ease-in-out infinite alternate;
+  animation: neon 1.5s ease-in-out infinite alternate;
+	color: #FFFaFa;
+}
+@-webkit-keyframes neon {
+  from {
+    text-shadow: 0 0 10px #fffafa, 0 0 20px #fffafa, 0 0 30px #fffafa, 0 0 40px #7b0999, 0 0 70px #7b0999, 0 0 80px #7b0999, 0 0 100px #7b0999, 0 0 150px #7b0999;
+  }
+  to {
+    text-shadow: 0 0 5px #fffafa, 0 0 10px #fffafa, 0 0 15px #fffafa, 0 0 20px #7b0999, 0 0 35px #7b0999, 0 0 40px #7b0999, 0 0 50px #7b0999, 0 0 75px #7b0999;
+  }
+}
+
+
+@media only screen and (max-width : 900px) {
+	#logcontainer{
+		width: 80%;
+		box-shadow: none;
+		font-size: 1.7em;
+	}
+}
+@media only screen and (max-width : 450px) {
+	#logcontainer{
+		font-size: 1.2em;
+	}
+}

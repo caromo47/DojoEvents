@@ -26,7 +26,9 @@ class EventsController < ApplicationController
 		@event = Event.find(params[:event_id])
 		if @event.update event_params
 			redirect_to "/events"
+			puts "update events"
 		else
+			puts @event.errors.full_messages
 			flash[:errors] = @event.errors.full_messages
 			redirect_to :back
 		end

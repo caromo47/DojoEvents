@@ -1,3 +1,17 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.add9{
+	grid-column: 1 / 2;
+	grid-row: 5;
+}
+.add10{
+	grid-column: 2 / 2;
+	grid-row: 5
+}
+.edit_header{
+	color: #c564b1;
+	text-decoration: underline;
+	text-decoration-style:double;
+	text-shadow: 5px 4px 5px #441947;
+}

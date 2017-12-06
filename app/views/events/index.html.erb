@@ -1,140 +1,175 @@
-<h1>Welcome, <%= current_user.first_name %></h1>
-<%= link_to "Edit My Profile", "users/#{current_user.id}/edit" %>
+<div id="container2">
+	<h1 class="welcome">Welcome,
+		<%= current_user.first_name %></h1>
+	<button class="edit_link">
+		<h3 class="edit_profile"><%= link_to "Edit My Profile", "users/#{current_user.id}/edit" %></h3>
+	</button>
 
-<h3>Here are some of the events at your state:</h3>
+	<h3 class="headlines">Here are some of the events at YOUR state</h3>
 
-<table>
-	<thead>
-		<th>Name</th>
-		<th>Date</th>
-		<th>Location</th>
-		<th>Host</th>
-		<th>Action/Status</th>
-	</thead>
-	<tbody>
-		<% @events.each do |e| %>
-		<tr>
-			<td><a href="/events/<%= e.id %>"><%= e.name %></a></td>
-			<td><%= e.date.strftime('%b %e, %Y') %></td>
-			<td><%= e.location %></td>
-			<td><%= e.user.first_name %></td>
-			<% if e.users.include?(current_user) %>
-				<td>Joining <a href="attends/<%= e.id %>" data-method="delete">Cancel</a></td>
-			<% elsif e.user == current_user %>
-				<td><a href="/events/<%= e.id %>/edit">Edit</a> | <a href="/events/<%= e.id %>" data-method="delete" >Delete</a></td>
-			<% else %>
-				<td><a href="attends/<%= e.id %>" data-method="post">Join</a></td>
+	<table class="table">
+		<thead>
+			<th>Name</th>
+			<th>Date</th>
+			<th>Location</th>
+			<th>Host</th>
+			<th>Action/Status</th>
+		</thead>
+		<tbody>
+			<% @events.each do |e| %>
+				<tr>
+					<td>
+						<a href="/events/<%= e.id %>"><%= e.name %></a>
+					</td>
+					<td><%= e.date.strftime('%b %e, %Y') %></td>
+					<td><%= e.location %></td>
+					<td><%= e.user.first_name %></td>
+					<% if e.users.include?(current_user) %>
+						<td>Joining
+							<a href="attends/<%= e.id %>" data-method="delete">Cancel</a>
+						</td>
+						<% elsif e.user == current_user %>
+							<td>
+								<a href="/events/<%= e.id %>/edit">Edit</a>
+								|
+								<a href="/events/<%= e.id %>" data-method="delete">Delete</a>
+							</td>
+						<% else %>
+							<td>
+								<a href="attends/<%= e.id %>" data-method="post">Join</a>
+							</td>
+						<% end %>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+
+		<h3 class="headlines other">Here are some of the events in OTHER states</h3>
+		<table class="table">
+			<thead>
+				<th>Name</th>
+				<th>Date</th>
+				<th>Location</th>
+				<th>State</th>
+				<th>Host</th>
+				<th>Action</th>
+			</thead>
+			<tbody>
+				<% @other_events.each do |e| %>
+					<tr>
+						<td>
+							<a href="/events/<%= e.id %>"><%= e.name %></a>
+						</td>
+						<td><%= e.date.strftime('%b %e, %Y') %></td>
+						<td><%= e.location %></td>
+						<td><%= e.state %></td>
+						<td><%= e.user.first_name %></td>
+						<% if e.users.include?(current_user) %>
+							<td>Joining
+								<a href="attends/<%= e.id %>" data-method="delete">Cancel</a>
+							</td>
+							<% elsif e.user == current_user %>
+								<td>
+									<a href="/events/<%= e.id %>/edit">Edit</a>
+									|
+									<a href="/events/<%= e.id %>" data-method="delete">Delete</a>
+								</td>
+							<% else %>
+								<td>
+									<a href="attends/<%= e.id %>" data-method="post">Join</a>
+								</td>
+							<% end %>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+
+			<h3 class="headlines">Add Event</h3>
+			<% if flash[:errors] %>
+				<% flash[:errors].each do |e| %>
+					<p class="errors"><%= e %></p>
+				<% end %>
 			<% end %>
-		</tr>
-		<% end %>
-	</tbody>
-</table>
-
-<h3>Here are some of the events on other state:</h3>
-<table>
-	<thead>
-		<th>Name</th>
-		<th>Date</th>
-		<th>Location</th>
-		<th>State</th>
-		<th>Host</th>
-		<th>Action</th>
-	</thead>
-	<tbody>
-		<% @other_events.each do |e| %>
-		<tr>
-			<td><a href="/events/<%= e.id %>"><%= e.name %></a></td>
-			<td><%= e.date.strftime('%b %e, %Y') %></td>
-			<td><%= e.location %></td>
-			<td><%= e.state %></td>
-			<td><%= e.user.first_name %></td>
-			<% if e.users.include?(current_user) %>
-				<td>Joining <a href="attends/<%= e.id %>" data-method="delete">Cancel</a></td>
-			<% elsif e.user == current_user %>
-				<td><a href="/events/<%= e.id %>/edit">Edit</a> | <a href="/events/<%= e.id %>" data-method="delete" >Delete</a></td>
-			<% else %>
-				<td><a href="attends/<%= e.id %>" data-method="post">Join</a></td>
-			<% end %>
-		</tr>
-		<% end %>
-	</tbody>
-</table>
-
-<h3>Add Event</h3>
-<% if flash[:errors] %>
-	<% flash[:errors].each do |e| %>
-		<%= e %>
-	<% end %>
-<% end %>
-<form action="events/create" method="post">
-	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-	<table>
-		<tr>
-			<td>Name: </td>
-			<td><input type="text" name="event[name]"></td>
-		</tr>
-		<tr>
-			<td>Date: </td>
-			<td><input type="date" name="event[date]"></td>
-		</tr>
-		<tr>
-			<td>Location:</td>
-			<td><input type="text" name="event[location]">
-				<select name="event[state]">
-					<option value="AL">AL</option>
-					<option value="AK">AK</option>
-					<option value="AR">AR</option>
-					<option value="AZ">AZ</option>
-					<option value="CA">CA</option>
-					<option value="CO">CO</option>
-					<option value="CT">CT</option>
-					<option value="DC">DC</option>
-					<option value="DE">DE</option>
-					<option value="FL">FL</option>
-					<option value="GA">GA</option>
-					<option value="HI">HI</option>
-					<option value="IA">IA</option>
-					<option value="ID">ID</option>
-					<option value="IL">IL</option>
-					<option value="IN">IN</option>
-					<option value="KS">KS</option>
-					<option value="KY">KY</option>
-					<option value="LA">LA</option>
-					<option value="MA">MA</option>
-					<option value="MD">MD</option>
-					<option value="ME">ME</option>
-					<option value="MI">MI</option>
-					<option value="MN">MN</option>
-					<option value="MO">MO</option>
-					<option value="MS">MS</option>
-					<option value="MT">MT</option>
-					<option value="NC">NC</option>
-					<option value="NE">NE</option>
-					<option value="NH">NH</option>
-					<option value="NJ">NJ</option>
-					<option value="NM">NM</option>
-					<option value="NV">NV</option>
-					<option value="NY">NY</option>
-					<option value="ND">ND</option>
-					<option value="OH">OH</option>
-					<option value="OK">OK</option>
-					<option value="OR">OR</option>
-					<option value="PA">PA</option>
-					<option value="RI">RI</option>
-					<option value="SC">SC</option>
-					<option value="SD">SD</option>
-					<option value="TN">TN</option>
-					<option value="TX">TX</option>
-					<option value="UT">UT</option>
-					<option value="VT">VT</option>
-					<option value="VA">VA</option>
-					<option value="WA">WA</option>
-					<option value="WI">WI</option>
-					<option value="WV">WV</option>
-					<option value="WY">WY</option>
-				</select>
-			</td>
-		</tr>
-	</table>
-	<input type="submit" value="Add Event">
-</form>
+			<div class="adding_event">
+				<div class="add1">
+					<p>Event Name:</p>
+				</div>
+				<div class="add2">
+					<form action="events/create" method="post">
+					<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+					<input type="text" name="event[name]">
+				</div>
+				<div class="add3">
+					<p>Date:</p>
+				</div>
+				<div class="add4">
+					<input type="date" name="event[date]">
+				</div>
+				<div class="add5">
+					<p>Location:</p>
+				</div>
+				<div class="add6">
+					<input class="location" type="text" name="event[location]">
+				</div>
+				<div class="add7">
+					<p>State:</p>
+				</div>
+				<div class="add8">
+					<select name="event[state]">
+						<option value="AL">AL</option>
+						<option value="AK">AK</option>
+						<option value="AR">AR</option>
+						<option value="AZ">AZ</option>
+						<option value="CA">CA</option>
+						<option value="CO">CO</option>
+						<option value="CT">CT</option>
+						<option value="DC">DC</option>
+						<option value="DE">DE</option>
+						<option value="FL">FL</option>
+						<option value="GA">GA</option>
+						<option value="HI">HI</option>
+						<option value="IA">IA</option>
+						<option value="ID">ID</option>
+						<option value="IL">IL</option>
+						<option value="IN">IN</option>
+						<option value="KS">KS</option>
+						<option value="KY">KY</option>
+						<option value="LA">LA</option>
+						<option value="MA">MA</option>
+						<option value="MD">MD</option>
+						<option value="ME">ME</option>
+						<option value="MI">MI</option>
+						<option value="MN">MN</option>
+						<option value="MO">MO</option>
+						<option value="MS">MS</option>
+						<option value="MT">MT</option>
+						<option value="NC">NC</option>
+						<option value="NE">NE</option>
+						<option value="NH">NH</option>
+						<option value="NJ">NJ</option>
+						<option value="NM">NM</option>
+						<option value="NV">NV</option>
+						<option value="NY">NY</option>
+						<option value="ND">ND</option>
+						<option value="OH">OH</option>
+						<option value="OK">OK</option>
+						<option value="OR">OR</option>
+						<option value="PA">PA</option>
+						<option value="RI">RI</option>
+						<option value="SC">SC</option>
+						<option value="SD">SD</option>
+						<option value="TN">TN</option>
+						<option value="TX">TX</option>
+						<option value="UT">UT</option>
+						<option value="VT">VT</option>
+						<option value="VA">VA</option>
+						<option value="WA">WA</option>
+						<option value="WI">WI</option>
+						<option value="WV">WV</option>
+						<option value="WY">WY</option>
+					</select>
+				</div>
+			</div>
+			<button type="submit" class="add_event_button" name="submit">Add Event</button>
+		</form>
+		</div>

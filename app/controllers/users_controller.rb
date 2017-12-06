@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	before_action :require_correct_user, only: [:show, :edit, :destroy]
+	before_action :require_correct_user, only: [:update, :show, :edit, :destroy]
 	before_action :require_login, only: [:update, :edit, :destroy, :show]
 	def create
 		@user = User.new(user_params)

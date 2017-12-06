@@ -5,16 +5,23 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+	<link href="https://fonts.googleapis.com/css?family=Audiowide|Montserrat|Share+Tech+Mono" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 	<% if current_user %>
-		<form action="/sessions/<%= current_user.id%>" method="post">
+		<form  id="logout" action="/sessions/<%= current_user.id%>" method="post">
 			<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 			<input type="hidden" name="_method" value="delete">
 			<input type="submit" value="Log Out">
 		</form>
 	<% end %>
+	<div class="nav">
+		<!-- <h1 class="header one">DOJO</h1>
+		<h1 class="header two">EVENTS</h1> -->
+		<img class="dojo" src="../../assets/dojo.png" alt="dojo pic" width="100px">
 
+	</div>
 	<%= yield %>
 
 </body>

@@ -1,3 +1,179 @@
 // Place all the styles related to the Events controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#container2{
+	// box-shadow: 2px 3px 3px #c564b1, -2px -2px 3px #c564b1;
+	// border-radius: 5px;
+	width: 90%;
+	max-height: 100vh;
+	text-align: center;
+	padding: 10px 10px;
+	font-size: 1.7em;
+	margin: auto;
+	color: #baa7ba;
+}
+.welcome{
+	text-align: left;
+	font-family: 'Share Tech Mono', monospace;
+	font-weight: lighter;
+	-webkit-animation: neon 1.5s ease-in-out infinite alternate;
+	-moz-animation: neon 1.5s ease-in-out infinite alternate;
+	animation: neon 1.5s ease-in-out infinite alternate;
+	color: #fffafa;
+}
+
+.edit_link{
+	background-color: inherit;
+	color: #c564b1;
+	width: 25%;
+	max-width: 25%;
+	border: 2px solid #441947;
+	margin-top: -30px;
+	padding: 0;
+	opacity: .9;
+}
+.edit_link:hover{
+	box-shadow: 2px 3px 3px #c564b1, -2px -2px 3px #c564b1;
+	opacity: 1;
+	transition: 1.2s;
+}
+.edit_profile{
+	text-decoration: none;
+	font-size: 1.5em;
+}
+.headlines{
+	text-decoration: underline overline;
+	text-decoration-color: #c564b1;
+	text-decoration-style: double;
+}
+.other{
+	margin-top: 150px;
+}
+.adding_event{
+	width: 50%;
+	margin: auto;
+}
+.adding_event > div {
+	text-align: left;
+	background: rgba(199,21,133,0.2);
+	font-size: 1.2em;
+}.adding_event {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 0px;
+  grid-auto-rows: minmax(10px, 50px);
+}
+.adding_event div input{
+	font-size: .6em;
+	line-height: 200%;
+	margin-left: 0;
+	background: #5b1c3e;
+	font-family: 'Share Tech Mono', monospace;
+}
+.add_event_button{
+	background-color: inherit;
+	color: #c564b1;
+	width: 25%;
+	max-width: 25%;
+	padding: 3px 7px;
+	border: 2px solid #441947;
+	font-size: .9em;
+	opacity: .9;
+	margin-bottom: 20px;
+}
+.add_event_button:hover{
+	box-shadow: 2px 3px 3px #c564b1, -2px -2px 3px #c564b1;
+	color: #3da5de;
+	opacity: 1;
+	transition: 1.2s;
+}
+.add1{
+	grid-column: 1 / 2;
+  grid-row: 1 ;
+}
+.add2{
+	grid-column: 2 / 2;
+  grid-row: 1;
+}
+.add3{
+	grid-column: 1 / 2;
+	grid-row: 2;
+}
+.add4{
+	grid-column: 2 / 2;
+	grid-row: 2;
+}
+.add5{
+	grid-column: 1 / 2;
+	grid-row: 3;
+}
+.add6{
+	grid-column: 2 / 2;
+	grid-row: 3;
+}
+.add7{
+	grid-column: 1 / 2;
+	grid-row: 4;
+}
+.add8{
+	grid-column: 2 / 2;
+	grid-row: 4;
+}
+.adding_event p{
+	text-align: right;
+}
+.edit_container{
+	text-align: center;
+	font-size: 2em;
+}
+#edit_event_button{
+	background-color: inherit;
+	color: #c564b1;
+	padding: 3px 7px;
+	border: 2px solid #441947;
+	font-size: 1.2em;
+	max-width: 15%;
+}
+#edit_event_button:hover{
+	box-shadow: 2px 3px 3px #c564b1, -2px -2px 3px #c564b1;
+	color: #3da5de;
+	opacity: 1;
+}
+@media only screen and (max-width : 1050px) {
+	 #container2{
+		 font-size: 1.2em !important;
+	 }
+ }
+@media only screen and (max-width : 600px) {
+	#container2{
+		font-size: 1em !important;
+	}
+	.edit_profile{
+		font-size: 1em !important;
+	}
+}
+@media only screen and (max-width : 490px) {
+	#container2{
+		font-size: .8em !important;
+		padding: 0;
+		margin: 0;
+	}
+	.adding_event{
+		width: 90%;
+	}
+}
+@media only screen and (max-width : 400px) {
+	.adding_event{
+		width: 100%;
+		font-size: .8em;
+	}
+	#edit_event_button{
+		max-width: 80%;
+		width: 80%;
+		font-size: .9em;
+	}
+	.add_event_button{
+		max-width: 80%;
+		width: 80%;
+	}
+}
