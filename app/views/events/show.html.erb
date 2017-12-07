@@ -8,16 +8,21 @@
 		<h3 class="info">People who are joining the event: <%= @event.users.count %></h3>
 		<table class="table">
 			<thead>
-				<th>Name</th>
-				<th>Location</th>
-				<th>State</th>
+				<tr>
+					<th>Name</th>
+					<th>Location</th>
+					<th>State</th>
+				</tr>
 			</thead>
 			<tbody>
-				<% @attend.each do |a| %>
-				<td><%= a.user.first_name %></td>
-				<td><%= a.event.location %></td>
-				<td><%= a.event.state %></td>
-				<% end %>
+					<% @attend.each do |a| %>
+				<tr>
+					<td><%= a.user.first_name %></td>
+					<td><%= a.event.location %></td>
+					<td><%= a.event.state %></td>
+				</tr>
+					<% end %>
+
 			</tbody>
 		</table>
 	</div>
