@@ -19,7 +19,7 @@
 	font-size: 1.1em;
 }
 .wrapper {
-  max-width: 1000px;
+  max-width: 90%;
   margin: 80px auto;
 }
 
@@ -77,4 +77,22 @@
 	border-bottom: 2px solid #3da5de;
 	margin: 10px 0;
 	width: 100%;
+}
+@media only screen and (max-width : 1025px) {
+	.wrapper{
+		margin-top: 20px;
+		grid-template-columns: repeat(1, 1fr);
+	}
+	.one{
+		grid-column: 1 / 1;
+		grid-row: 1 ;
+	}
+	.two {
+		grid-column: 1 /1;
+		grid-row: 2
+	}
+	.eventName{
+		font-size: 3em;
+		margin-bottom: 0;
+	}
 }
